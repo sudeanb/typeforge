@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeForge — watch Algorithm W infer your types</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #2b3444;
+    --text: #dce4ef; --muted: #7d8899; --accent: #ffa657; --ok: #56d364; --err: #f2705e;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 12px; }
+  header h1 { font-size: 19px; color: var(--accent); }
+  header span { color: var(--muted); font-size: 13px; }
+  header a { color: var(--muted); font-size: 13px; margin-left: auto; }
+  .layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px 20px; }
+  @media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+  .card h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+  textarea { width: 100%; height: 240px; background: #090d13; color: var(--text); border: 1px solid var(--border);
+             border-radius: 6px; padding: 10px; font: 13px/1.55 ui-monospace, Menlo, monospace; resize: vertical; outline: none; }
+  .bar { display: flex; gap: 8px; margin-top: 8px; align-items: center; flex-wrap: wrap; }
+  button { background: var(--accent); border: 0; border-radius: 6px; color: #1c1004; padding: 6px 14px; font-weight: 600; cursor: pointer; font-size: 13px; }
+  button:hover { filter: brightness(1.12); }
+  button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  button.ghost:hover { color: var(--text); }
+  #result { font: 20px ui-monospace, Menlo, monospace; color: var(--ok); min-height: 30px; }
+  #result .err { color: var(--err); font-size: 14px; }
+  #steps { height: 380px; overflow: auto; font: 12.5px/1.6 ui-monospace, Menlo, monospace; }
+  #steps div { padding: 2px 6px; border-radius: 4px; }
+  #steps div.current { background: #33411f; color: var(--amber); }
+  #steps div.done { color: var(--ok); }
+  .controls { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+  input[type=range] { accent-color: var(--accent); }
+  footer { padding: 8px 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>⒯ TypeForge</h1>
+  <span>Hindley-Milner type inference (Algorithm W) with a replayable derivation trail</span>
+  <a href="https://github.com/sudeanb/typeforge">GitHub ↗</a>
+</header>
+<div class="layout">
+  <div class="card">
+    <h2>Tyl source</h2>
+    <textarea id="src" spellcheck="false"></textarea>
+    <div class="bar">
+      <button id="infer">▶ Infer</button>
+      <span id="result"></span>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Derivation replay</h2>
+    <div id="steps"></div>
+    <div class="controls">
+      <button id="play" class="ghost">⟳ Replay</button>
+      <input id="speed" type="range" min="60" max="600" value="240">
+      <span style="font-size:12px;color:var(--muted)">ms/step</span>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Examples</h2>
+    <div id="examples"></div>
+  </div>
+</div>
+<footer>Let-polymorphism: each use of a let-bound name gets a fresh instantiation. The occurs check rejects infinite types. Builtins (head/tail) are generalized schemes.</footer>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

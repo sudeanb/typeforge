@@ -1,0 +1,2 @@
+// head/tail are polymorphic over the element type
+let first = head in first [(1, "one"), (2, "two")]

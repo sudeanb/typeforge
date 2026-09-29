@@ -1,0 +1,2 @@
+// the identity function — fully polymorphic
+let id = fn x => x in id

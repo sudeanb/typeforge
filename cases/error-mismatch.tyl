@@ -1,0 +1,2 @@
+// branches must agree
+if true then 1 else "not one"

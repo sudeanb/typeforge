@@ -1,0 +1,11 @@
+{
+  "name": "typeforge",
+  "version": "0.1.0",
+  "description": "TypeForge: Hindley-Milner type inference (Algorithm W) for a tiny ML-flavoured language — union-find types, let-polymorphism, occurs check, derivation-trail replay. Zero dependencies.",
+  "type": "module",
+  "bin": { "typeforge": "bin/typeforge.js" },
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=18" },
+  "keywords": ["type-inference", "hindley-milner", "algorithm-w", "types", "unification", "playground", "functional"],
+  "license": "MIT"
+}

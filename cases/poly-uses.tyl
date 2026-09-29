@@ -1,0 +1,2 @@
+// two instantiations of the same polymorphic binding
+let id = fn x => x in if id true then id 1 else 0

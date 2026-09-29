@@ -1,0 +1,2 @@
+// the occurs check rejects the self-application
+fn x => x x
